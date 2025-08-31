@@ -58,8 +58,9 @@ cd docker-deploy-lab
 ## Build the Docker Image
 
 1. Run the command below to build a docker image. We will "tag" the image with the name demo_nginx_image
-
+```
  docker build -t demo_nginx_image .
+```
 
  [NOTE] The "dot" at the end of the file is neccessary if running this from the command line as that is telling docker to put the image in the current directory.
 
@@ -90,8 +91,9 @@ cd docker-deploy-lab
 
 
 2. Verify AWS CLI version 
+```
 aws --version
-
+```
 
 3. Configure AWS CLI with your credentials
     aws configure
@@ -148,7 +150,7 @@ For your project you can provide your own file name. Be sure to have the file na
 ```
   [NOTE] The AWS terraform version changes often, so the version presented here may be newer or older than what you will encounter in other repositories.
 
-    ![Terraform configuration](/graphics/vim-terraform-config.png)
+  ![Terraform configuration](/graphics/vim-terraform-config.png)
 
 3. Intialize Terraform and deploy the configuration.
 
@@ -202,9 +204,9 @@ Example:
 aws eks update-kubeconfig --region us-east-1 --name demo
 
 Verify connection to your kubernetes cluster
-
+```
 kubectl config view
-
+```
 
 kubectl create namespace -n 
 3. Create a deployment YAML file and input the contents below in the file and save as demo_nginx_deployment.yaml
@@ -247,13 +249,18 @@ XXXXXXXXX912.dkr.ecr.us-east-1.amazonaws.com/demo_nginx_image:latest
 
 4. Deploy the mainfest file using kubectl.
 
+```
 kubectl apply -f demo_nginx_deployment.yaml
+```
 
 5. Verify the deployment and pod status
 
+```
 kubectl get deployments
-
+```
+```
 kubectl get pods
+```
 
 5. Provide console access to the application
 
@@ -266,6 +273,8 @@ You obtain the name of the pod from the kubectl command "kubectl get pods"
 If you see the the "Welcome to nginx!" message than your pod is running and your deployment was successful.
 
 ![Application Accessible](/graphics/demo-nginx-deployment-worked.png)
+
+You have successfully deploy a image created in Docker, pushed the container image to AWS ECR and then deployed the container in a Amazon Kubernetes Cluster.
 
 
   
