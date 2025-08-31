@@ -31,7 +31,7 @@ cd docker-deploy-lab
     vim Dockerfile
 
 2. Add the content below to the Dockerfile. I included comments for clarity. Please modify/remove the comments as you see fit.
-
+```
     # Create a container image from nginx:stable
     FROM nginx:stable
 
@@ -47,7 +47,7 @@ cd docker-deploy-lab
 
     # CMD instruction to start Nginx when the container starts
     CMD ["nginx", "-g", "daemon off;"]
-
+```
   ![Dockerfile](/graphics/vim-dockerfile.png)
 
 3. Save the file and exit the editor if using a command line application (e.g. VI). If using a graphical editor it is not neccessary.
@@ -123,7 +123,7 @@ For your project you can provide your own file name. Be sure to have the file na
 1. Create a file named ecr_demo_nginx.tf in your editor of choice.
 
 2. Insert the content below, inlcuding the comment section beginning with #: 
-
+```
     terraform {
     required_providers {
         aws = {
@@ -142,8 +142,8 @@ For your project you can provide your own file name. Be sure to have the file na
     resource "aws_ecr_repository" "demo_nginx_image" {
     name = "demo_nginx_image"
     }
-
-    [NOTE] The AWS terraform version changes often, so the version presented here may be newer or older than what you will encounter in other repositories.
+```
+  [NOTE] The AWS terraform version changes often, so the version presented here may be newer or older than what you will encounter in other repositories.
 
     ![Terraform configuration](/graphics/vim-terraform-config.png)
 
@@ -202,11 +202,10 @@ Verify connection to your kubernetes cluster
 
 kubectl config view
 
- d
 
 kubectl create namespace -n 
 3. Create a deployment YAML file and input the contents below in the file and save as demo_nginx_deployment.yaml
-
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -233,6 +232,7 @@ spec:
             limits:
               cpu: 100m
               memory: 256Mi
+```
 
 [CAUTION] You must input the actual URI of the image that is in the ECR repository.
 
