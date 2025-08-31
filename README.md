@@ -31,6 +31,7 @@ cd docker-deploy-lab
     vim Dockerfile
 
 2. Add the content below to the Dockerfile. I included comments for clarity. Please modify/remove the comments as you see fit.
+
 ```
     # Create a container image from nginx:stable
     FROM nginx:stable
@@ -47,7 +48,9 @@ cd docker-deploy-lab
 
     # CMD instruction to start Nginx when the container starts
     CMD ["nginx", "-g", "daemon off;"]
+  
 ```
+
   ![Dockerfile](/graphics/vim-dockerfile.png)
 
 3. Save the file and exit the editor if using a command line application (e.g. VI). If using a graphical editor it is not neccessary.
